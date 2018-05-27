@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../images/background.jpg);
+    font-family: 'Comic Sans MS', serif;
+    color: rgb(31, 22, 16);
+    font-size: 25px;
+}
+
+.center {
+    text-align: center;
+}
+
+.result {
+    display: none;
+    font-size: 2.5vw;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+#lastName{
+    margin-left: 7px;
+}
+
+#emailAddress{
+    margin-left: 49px;
+}
+
+.start {
+    position: fixed;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    background: rgba(163, 177, 245, 0.6);
+    visibility: visible;
+    margin: auto;
+}
+
+button {
+    margin: 10px;
+    height: 50px;
+    width: 200px;
+    background: rgba(126, 134, 157, 1);
+    border: none;
+    font-family: 'Antic Slab', serif;
+    font-size: 40px;
+}
+
+button:hover {
+    text-shadow: rgba(255, 255, 255, 0.815) 0 0 10px;
+}
+
+.wrapper {
+    margin: 50px;
+    margin-top: 20px;
+    display: none;
+}
+
+
+.clock {
+    margin: 10px; 
+    background-color: rgba(31, 29, 29, 0);
+    color:white; 
+    font: 24px Arial; 
+    text-align:center;
+}
+
+.match_field {
+    background: rgba(144, 125, 145, 0.4);
+	width:900px;
+	padding:24px;
+    margin:0px auto;
+    text-align:center;
+}
+
+.match_field > div{
+    display: inline-block;
+	width: 130px;
+	height: 130px;
+	margin:10px;
+	font-size:64px;
+	cursor:pointer;
+    text-align:center;
+    background-color: rgba(68, 154, 157, 1);
+}
+
+.match_field img {
+    opacity: 0;
+    transition-delay: 0.3s;
+}
+
+.flipped {
+    transform: rotatey(-180deg);
+    transition: 1s;
+    box-shadow: -8px 8px 5px #333;
+}
+
+.flipped img{
+    opacity: 1;
+    transition-delay: 0.3s;
+}
+
+.unflipped {
+    transition: 1s;
+}
+
+.coincided {
+    visibility: hidden;
+}
+

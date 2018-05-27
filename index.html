@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Consentration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+    <script src="script/script.js"></script>
+</head>
+
+<body>
+    <main>
+        <div id="start" class="start">
+            <h3 class="center">About:</h3>
+            <p class="center">Memory, also known as Match Match, is a counter card game where the object is to find pairs. </p>
+            <h3 class="center">To Play:</h3>
+            <p>1. Select two cards to try to match the pictures. </p>
+            <p>2. If you match the pictures you can go again. </p>
+            <p>3. If they don't match, computer will turn them back. </p>
+            <p>4. The player that finds all pairs faster than anybody else wins. </p>
+            <p>5. Have Fun!.</p><br/>         
+            <form name="init" onsubmit="validate(); return false;" class="center">
+                <div>
+                    <label for="firstName">First name: </label>
+                    <input id="firstName" name="firstname" type="text"><br/>
+
+                    <label for="lastName">Last name: </label>
+                    <input id="lastName" name="lastname" type="text"><br/>
+                    
+                    <label for="emailAddress">E-mail: </label>
+                    <input id="emailAddress" name="email" type="email">
+                </div>
+                <br/>
+                <p>Theme:</p>
+                <div>
+                    <input type="radio" id="themeChoice1" name="theme" value="StarWars" checked>
+                    <label for="themeChoice1">Star Wars</label>
+
+                    <input type="radio" id="themeChoice2" name="theme" value="PiratesOfTheCaribbean">
+                    <label for="themeChoice2">Pirates of the Caribbean</label>
+
+                    <input type="radio" id="themeChoice3" name="theme" value="Avengers">
+                    <label for="themeChoice3">Avengers</label>
+                </div>
+                <p>Difficulty:</p>
+                <div>
+                    <input type="radio" id="difficultyChoice1" name="difficulty" value="10" checked>
+                    <label for="difficultyChoice1">Low</label>
+
+                    <input type="radio" id="difficultyChoice2" name="difficulty" value="16">
+                    <label for="difficultyChoice2">Medium</label>
+
+                    <input type="radio" id="difficultyChoice3" name="difficulty" value="24">
+                    <label for="difficultyChoice3">Hight</label>
+                </div>
+                <div class="result"></div> 
+                <div>
+                    <button type="submit" id="go_button">Start</button>
+                </div>                
+            </form>
+            <div>
+                <button onclick="show_records()">Records</button>
+                <button onclick="clear_records()">Clear</button>
+            </div>
+        </div>
+        <div id="wrapper" class="wrapper center">
+            <button onclick="newField()">New Game</button>
+            <div id="clock_div" class="clock">
+                <span class="minutes">00</span>
+                <span>:</span>
+                <span class="seconds">00</span>
+            </div>
+            <div id="field" class="match_field"></div>
+        </div>        
+    </main>
+</body>
+
+</html>
