@@ -29,8 +29,20 @@ function flip(obj) {
 function show_records(){ 
 	let str="Record table:\n\n";
 	let records = Object.keys(window.localStorage);
-	for (var i=0; i < records.length; i++) 
-		str+= (i+1) + ") " + records[i]+ " - " + localStorage.getItem(records[i])+" sec." + '\n'; 
+	// for (var i=0; i < records.length; i++) 
+	// 	str+= (i+1) + ") " + records[i]+ " - " + localStorage.getItem(records[i])+" sec." + '\n'; 
+    var dict = new Array();
+    var keys = Object.keys(localStorage);
+    for(var key in keys) {
+    dict[localStorage.getItem(keys[key])] = keys[key];
+    }
+    dict = sortOnKeys(dict);
+
+    var i = 1;
+    for(var key in dict) {
+        str += i + ") " + dict[key] + " - " + key +" sec." + '\n';
+        i++;
+    }
 	alert(str);
 }
 
@@ -112,7 +124,7 @@ function validate() {
     else { elems.lastname.className = ''; }
     if (!elems.email.value) { elems.email.className = 'error'; }
     else { elems.email.className = ''; }
-
+    
     let rad = document.getElementsByName('theme');
     for (var i = 0; i < rad.length; i++) {
         if (rad[i].checked) {
@@ -127,6 +139,7 @@ function validate() {
     }
 
     if (elems.firstname.value && elems.lastname.value && elems.email.value) {        
+        //window.localStorage.setItem(elems.firstname.value + " " + elems.lastname.value + " " + elems.email.value, "no result");
         document.querySelector('.wrapper').style.display = 'block';
         newField();
     }
@@ -141,7 +154,7 @@ function newField() {
     for (let i = 0; i <= (whole_amount_of_cards - 1); i++) {
         let div = document.createElement('div');
         div.className = String(arr_of_cards[i]);
-        div.innerHTML = '<img src="images/' + theme + '/' + (arr_of_cards[i]) + '.jpg" alt="img not found" width="100%">';
+        div.innerHTML = '<img src="images/' + theme + '/' + (arr_of_cards[i]) + '.jpg" alt=":(" width="100%">';
         document.getElementById('field').appendChild(div);
         let card = new Card(arr_of_cards[i], div.innerHTML, div);
     }
@@ -158,9 +171,28 @@ function gameOver() {
     document.querySelector('.wrapper').style.display = 'none';
     document.querySelector('.result').style.display = 'block';
     window.localStorage.setItem(elems.firstname.value + " " + elems.lastname.value + " " + elems.email.value, result_time.min + ":" + result_time.sec);
-    document.querySelector('.result').innerHTML = elems.firstname.value + ", your result is " + result_time.min + ":" + result_time.sec;
     
+    document.querySelector('.result').innerHTML = elems.firstname.value + ", your result is " + result_time.min + ":" + result_time.sec;
     document.getElementById('start').style.display = 'block';   
 }
+
+
+
+function sortOnKeys(dict) {
+    var sorted = [];
+    for(var key in dict) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    var tempDict = {};
+    for(var i = 0; i < sorted.length; i++) {
+        tempDict[sorted[i]] = dict[sorted[i]];
+    }
+
+    return tempDict;
+}
+
+//console.log("asas");
 
 
