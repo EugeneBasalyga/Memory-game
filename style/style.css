@@ -49,7 +49,17 @@ button {
     width: 200px;
     background: rgba(126, 134, 157, 1);
     border: none;
-    font-family: 'Antic Slab', serif;
+    font-family: 'Comic Sans MS', serif;
+    font-size: 40px;
+}
+
+#recordsbutton{
+    margin: auto;
+    height: 50px;
+    width: 200px;
+    background: rgba(126, 134, 157, 1);
+    border: none;
+    font-family: 'Comic Sans MS', serif;
     font-size: 40px;
 }
 
@@ -63,7 +73,10 @@ button:hover {
     display: none;
 }
 
-
+h1{
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
 .clock {
     margin: 10px; 
     background-color: rgba(31, 29, 29, 0);
@@ -115,3 +128,29 @@ button:hover {
     visibility: hidden;
 }
 
+
+.div_records{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.records {
+    height: 600px;
+    width: 850px;
+    margin: 20px auto;
+    background-color: rgba(117, 164, 221, 0.623);
+}
+
+tr, td {
+    border: 2px solid white;
+}
+
+.number{
+    width: 30px;
+}
+
+.fio{
+    width: 650px;
+}

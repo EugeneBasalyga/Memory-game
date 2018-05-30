@@ -27,7 +27,12 @@ function flip(obj) {
 }
 
 function show_records(){ 
-	let str="Record table:\n\n";
+
+    document.getElementById('start').style.display = 'none';
+    document.querySelector('.div_records').style.display = 'block';
+    let table = document.querySelector('.records');
+
+	//let str="Record table:\n\n";
 	let records = Object.keys(window.localStorage);
 	// for (var i=0; i < records.length; i++) 
 	// 	str+= (i+1) + ") " + records[i]+ " - " + localStorage.getItem(records[i])+" sec." + '\n'; 
@@ -38,17 +43,31 @@ function show_records(){
     }
     dict = sortOnKeys(dict);
 
-    var i = 1;
-    for(var key in dict) {
-        str += i + ") " + dict[key] + " - " + key +" sec." + '\n';
+    // var i = 1;
+    // for(var key in dict) {
+    //     str += i + ") " + dict[key] + " - " + key +" sec." + '\n';
+    //     i++;
+    // }
+    // alert(str);
+
+    var i = 0;
+    for (var key in dict) {
+        table.rows[i].cells[1].innerHTML = dict[key];
+        table.rows[i].cells[2].innerHTML = key;
         i++;
+        if (i == 10)
+            break;
     }
-	alert(str);
 }
 
 function clear_records(){
     alert("Done");
     window.localStorage.clear();
+}
+
+function closeRecords() {
+    document.querySelector('.div_records').style.display = 'none';
+    document.getElementById('start').style.display = 'block';
 }
 
 function match(obj) {
@@ -116,6 +135,22 @@ function clockStop() {
     timerId = null;
 }
 
+function sortOnKeys(dict) {
+    var sorted = [];
+    for(var key in dict) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    var tempDict = {};
+    for(var i = 0; i < sorted.length; i++) {
+        tempDict[sorted[i]] = dict[sorted[i]];
+    }
+
+    return tempDict;
+}
+
+
 function validate() {
     let elems = document.forms.init.elements;
     if (!elems.firstname.value) { elems.firstname.className = 'error'; }
@@ -139,7 +174,6 @@ function validate() {
     }
 
     if (elems.firstname.value && elems.lastname.value && elems.email.value) {        
-        //window.localStorage.setItem(elems.firstname.value + " " + elems.lastname.value + " " + elems.email.value, "no result");
         document.querySelector('.wrapper').style.display = 'block';
         newField();
     }
@@ -178,21 +212,6 @@ function gameOver() {
 
 
 
-function sortOnKeys(dict) {
-    var sorted = [];
-    for(var key in dict) {
-        sorted[sorted.length] = key;
-    }
-    sorted.sort();
 
-    var tempDict = {};
-    for(var i = 0; i < sorted.length; i++) {
-        tempDict[sorted[i]] = dict[sorted[i]];
-    }
-
-    return tempDict;
-}
-
-//console.log("asas");
 
 
